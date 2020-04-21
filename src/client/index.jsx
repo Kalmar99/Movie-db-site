@@ -6,6 +6,7 @@ import Home from './components/home'
 import {Login} from './components/login'
 import SignUp from './components/signup'
 import {NotFound} from './components/notfound'
+import Movie from './components/movie'
 
 export class App extends React.Component {
     constructor(props) {
@@ -33,6 +34,11 @@ export class App extends React.Component {
                                render={props => <SignUp {...props}
                                                         username={this.state.username}
                                                         updateLoggedInUser={this.updateLoggedInUser}/>}/>
+                         <Route exact path="/movie"
+                               render={props => <Movie {...props}
+                                                      username={this.state.username}
+                                                      updateLoggedInUser={this.updateLoggedInUser}/>}/>
+
                         <Route exact path="/"
                                render={props => <Home {...props}
                                                       username={this.state.username}

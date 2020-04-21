@@ -1,0 +1,9 @@
+@import URL('./bootstrap/bootstrap.min.css');
+@import URL('./fontawesome/css/all.css');
+@import URL('./home.css');
+
+body {
+    background:#18181E;
+    color: #DEC79B;
+}
+
