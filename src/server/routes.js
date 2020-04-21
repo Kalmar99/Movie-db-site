@@ -37,4 +37,23 @@ router.get('/api/user',(req,res) => {
     res.status(401).send()
 })
 
+router.get('/api/movies',(req,res) => {
+
+    const movies = db.getAllMovies();
+    
+    res.json(movies)
+    
+}) 
+
+router.get('/api/movies/:name',(req,res) => {
+    
+    const movie = db.getMovie(req.params['name'])
+    if(!movie) {
+        res.status(404)
+        res.send()
+    } else {
+        res.json(movie)
+    }
+})
+
 module.exports = router;
