@@ -37,12 +37,12 @@ passport.use(new LocalStrategy (
 ))
 
 passport.serializeUser(function(user,done){
-    done(null,user.id)
+    done(null,user.username)
 })
 
 passport.deserializeUser(function(username,done) {
     const user = db.getUser(username)
-
+    
     if(user) {
         done(null,user)
     } else {

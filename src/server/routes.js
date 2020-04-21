@@ -4,12 +4,14 @@ const passport = require('passport');
 const db = require('./db')
 
 
-router.post('api/login',passport.authenticate('local'),(req,res) => {
+router.post('/api/login',passport.authenticate('local'),(req,res) => {
     res.status(204).send();
 })
 
-router.post('api/signup',function(req,res) {
+router.post('/api/signup',function(req,res) {
+
     const created = db.createUser(req.body.username,req.body.password)
+    console.log(created)
     if(!created) {
         res.status(400).send();
     } 
@@ -26,7 +28,7 @@ router.post('api/signup',function(req,res) {
     });
 })
 
-router.get('api/user',(req,res) => {
+router.get('/api/user',(req,res) => {
     if(req.user) {
         res.json({
             username: req.user.username

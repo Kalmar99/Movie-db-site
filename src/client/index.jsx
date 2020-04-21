@@ -12,12 +12,12 @@ export class App extends React.Component {
         super(props)
 
         this.state = {
-            userId: null
+            username: null
         }
     }
 
-    updateLoggedInUserId = (userId) => {
-      this.setState({userId:userId})  
+    updateLoggedInUser = (username) => {
+      this.setState({username:username})  
     }
 
     render() {
@@ -27,16 +27,16 @@ export class App extends React.Component {
                     <Switch>
                         <Route exact path="/login"
                                render={props => <Login {...props}
-                                                       userId={this.state.userId}
-                                                       updateLoggedInUserId={this.updateLoggedInUserId}/>}/>
+                                                       username={this.state.username}
+                                                       updateLoggedInUser={this.updateLoggedInUser}/>}/>
                         <Route exact path="/signup"
                                render={props => <SignUp {...props}
-                                                        userId={this.state.userId}
-                                                        updateLoggedInUserId={this.updateLoggedInUserId}/>}/>
+                                                        username={this.state.username}
+                                                        updateLoggedInUser={this.updateLoggedInUser}/>}/>
                         <Route exact path="/"
                                render={props => <Home {...props}
-                                                      userId={this.state.userId}
-                                                      updateLoggedInUserId={this.updateLoggedInUserId}/>}/>
+                                                      username={this.state.username}
+                                                      updateLoggedInUser={this.updateLoggedInUser}/>}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>

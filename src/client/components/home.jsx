@@ -6,6 +6,7 @@ export default class Home extends React.Component {
         return (
             <div>
                 <h1>React is running</h1>
+                <p>Welcome: {this.props.username}</p>
             </div>
         )
     }
