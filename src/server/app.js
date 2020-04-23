@@ -4,12 +4,12 @@ const passport = require('passport');
 const session = require("express-session");
 const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
-const cors = require('cors');
 const routes = require('./routes');
 const db = require('./db')
 
 
 const app = express();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
@@ -17,7 +17,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
-app.use(express.static('public'));
+
+
+app.use(express.static('public'))
+
 
 passport.use(new LocalStrategy (
     {
@@ -55,8 +58,9 @@ app.use(passport.session());
 
 app.use('/',routes)
 
-app.use((req,res,next) => {
-    res.sendFile(path.resolve(__dirname,'..','..','public','index.html'));
-})
+app.use((req, res, next) => {
+    console.log(req)
+    res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'index.html'));
+});
 
 module.exports = app;

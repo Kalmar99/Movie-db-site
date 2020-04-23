@@ -1,0 +1,15 @@
+
+.star {
+    display:inline-block;
+}
+
+.star-text {
+    display:inline-block;
+}
+
+.review {
+    background-color: #101014;
+    border-radius:4px;
+    
+}
+

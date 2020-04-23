@@ -5,7 +5,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Home from './components/home'
 import {Login} from './components/login'
 import SignUp from './components/signup'
-import {NotFound} from './components/notfound'
+import NotFound from './components/notfound'
 import Movie from './components/movie'
 
 export class App extends React.Component {

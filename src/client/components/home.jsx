@@ -19,6 +19,7 @@ export default class Home extends React.Component {
 
     componentDidMount() {
         this.fetchMovies()
+        console.log(this.props)
     }
 
     fetchMovies = async () => {
@@ -57,7 +58,7 @@ export default class Home extends React.Component {
                     <p>{this.state.error && this.state.error}</p>
                     {this.state.movies && this.state.movies.map((movie) => 
                     <Col className="m-2 mb-3" lg={2} key={movie.name}>
-                        <Link to={"/movie/?name=" + movie.name}><img src={movie.image}></img></Link>
+                        <Link to={"/movie?n=" + movie.name}><img src={movie.image}></img></Link>
                     </Col>
                     )}
                 </Row>
