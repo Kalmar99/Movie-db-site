@@ -59,7 +59,11 @@ function createMovie(name,stars,year,description,image,review) {
 }
 
 function getMovie(name) {
-    return movies.get(name)
+    if(!movies.get(name)){
+        return false;
+    } else {
+        return movies.get(name)
+    }
 }
 
 function getAllMovies() {
@@ -91,4 +95,4 @@ function addExampleMovies() {
 
 createUser("kalmar","123");
 addExampleMovies();
-module.exports = {createUser,getUser,verifyUser,getMovie,getAllMovies,createMovie}
+module.exports = {createUser,getUser,verifyUser,getMovie,getAllMovies,createMovie,addExampleMovies}

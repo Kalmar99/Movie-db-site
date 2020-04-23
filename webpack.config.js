@@ -4,7 +4,10 @@ module.exports = {
     entry: './src/client/index.jsx',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public')
+        path: path.resolve(__dirname, 'public'),
+        libraryTarget: 'var',
+        library: 'EntryPoint'
+
     },
     module: {
         rules: [
