@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-export default class Movie extends React.Component {
+class Movie extends React.Component {
     constructor(props) {
         super(props)
 
@@ -18,39 +18,46 @@ export default class Movie extends React.Component {
 
     componentDidMount() {
         const id = new URLSearchParams(window.location.search).get('n')
-        console.log(id)
+        console.log('id')
         this.fetchMovie(id);
     }
 
     fetchMovie = async (id) => {
 
+        let response;
+        let payload;
+
         try {
 
             const url = '/api/movies/' + id
 
-            const response = await fetch(url)
-            const payload = await response.json();
+            response = await fetch(url)
+            payload = await response.json();
             
-            if(response.status == 404) {
-                this.setState({error: '404 Not found'})
-            }
-
-            if(response.status != 200) {
-                this.setState({error: 'error retrieving movie, status code: ' + response.status})
-            }
-            console.log(payload)
-            this.setState({movie: payload})
-
         } catch(err) {
             this.setState({error: err})
         }
+
+        
+        if(response.status == 404) {
+            this.setState({error: '404 Not found'})
+        }
+
+        if(response.status != 200) {
+            this.setState({error: 'error retrieving movie, status code: ' + response.status})
+        }
+        
+        this.setState({movie: payload})
 
     }
 
     render() {
         return (
             <Container className="mt-3">
-                {this.state.movie && <Container><Row className="">
+                <Row>
+                    {this.state.error && <p>{this.state.error}</p>}
+                </Row>
+                {this.state.movie && <Container><Row className="movie">
                     
                     <Col lg={2}>
                         <img src={this.state.movie.image}></img>
@@ -77,7 +84,7 @@ export default class Movie extends React.Component {
                     </Row>
                     <Row className="mt-3">
                         <Col lg={8}>
-                        {this.state.movie.review.map((review) => <Container key={review.title + review.description} className="review p2">
+                        {this.state.movie.review && this.state.movie.review.map((review) => <Container key={review.title + review.description} className="review p2">
                             <Row>
                                 <Col><h4>{review.title}</h4></Col>
                                 <Col className="text-right" lg={2}><i className="fas fa-star star"> </i> <p className="star-text">{review.stars}</p></Col>
@@ -117,3 +124,5 @@ export default class Movie extends React.Component {
         )
     }
 }
+
+export {Movie}
