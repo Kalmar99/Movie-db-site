@@ -8,10 +8,15 @@ router.post('/api/login',passport.authenticate('local'),(req,res) => {
     res.status(204).send();
 })
 
+router.post('/api/logout',function(req,res) {
+    req.logOut()
+    res.status(204).send()
+})
+
 router.post('/api/signup',function(req,res) {
 
     const created = db.createUser(req.body.username,req.body.password)
-    console.log(created)
+
     if(!created) {
         res.status(400).send();
     } 
@@ -44,6 +49,26 @@ router.get('/api/movies',(req,res) => {
     res.json(movies)
     
 }) 
+
+router.post('/api/movies',(req,res) => {
+
+    if(req.user) {
+
+        const name = req.body.name
+        const image = req.body.image
+        const stars = req.body.stars
+        const description = req.body.description
+        const year = req.body.year
+        db.createMovie(name,stars,year,description,image,null)
+        res.header('location','/api/movies/' + name)
+        res.status(201)
+        res.send()
+        return;
+    }
+
+    res.status(401).send()
+
+})
 
 router.get('/api/movies/:name',(req,res) => {
     

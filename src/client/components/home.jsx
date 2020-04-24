@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import {Header} from './header'
 
 class Home extends React.Component {
     
@@ -73,14 +74,7 @@ class Home extends React.Component {
         return (
             <Container>
                 <Row>
-                    <Container className="m-2">
-                        <Row>
-                            <img src="./img/movies.png" className="img-fluid ml-2"></img>
-                            <Col lg={2}>
-                                <h1>MovieDB</h1>
-                            </Col>
-                        </Row>
-                    </Container>
+                    <Header username={this.props.username} updateLoggedInUser={this.props.updateLoggedInUser} history={this.props.history}/>
                 </Row>
                
                 {display}

@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+import {Header} from './header'
+
 class Movie extends React.Component {
     constructor(props) {
         super(props)
@@ -18,7 +20,7 @@ class Movie extends React.Component {
 
     componentDidMount() {
         const id = new URLSearchParams(window.location.search).get('n')
-        console.log('id')
+       
         this.fetchMovie(id);
     }
 
@@ -54,7 +56,11 @@ class Movie extends React.Component {
     render() {
         return (
             <Container className="mt-3">
-                <Row>
+                <Row className="mb-3">
+                    <Header username={this.props.username} updateLoggedInUser={this.props.updateLoggedInUser} history={this.props.history}/>
+                </Row>
+
+                <Row className="mt-3">
                     {this.state.error && <p>{this.state.error}</p>}
                 </Row>
                 {this.state.movie && <Container><Row className="movie">

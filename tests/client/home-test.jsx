@@ -19,6 +19,7 @@ test("Test failed fetch", async () => {
             <Home/>
         </MemoryRouter>
         );
+    
 
     await flushPromises();
 
@@ -52,9 +53,10 @@ test('Display 1 movie using stubFetch',async () => {
 
     const driver = mount(
         <MemoryRouter initialEntries={["/home"]}>
-            <Home/>
+            <Home updateLoggedInUser={() => {}} username='test'/>
         </MemoryRouter>
     );
+
 
     await flushPromises()
 
@@ -70,7 +72,7 @@ test("Test display movies using SuperTest", async () => {
 
     const driver = mount(
         <MemoryRouter initialEntries={["/home"]}>
-            <Home/>
+            <Home updateLoggedInUser={() => {}} username='test'/>
         </MemoryRouter>
     );
 

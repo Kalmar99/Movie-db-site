@@ -59,7 +59,6 @@ app.use(passport.session());
 app.use('/',routes)
 
 app.use((req, res, next) => {
-    console.log(req)
     res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'index.html'));
 });
 
