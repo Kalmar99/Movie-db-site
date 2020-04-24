@@ -80,24 +80,22 @@ export class Header extends React.Component {
    }
 
     render() {
+       
         return (
             <Container className="m-2">
-                <Row>
-                    
-                </Row>
                 <Row>
                     <img src="./img/movies.png" className="img-fluid ml-2"></img>
                     <Col lg={2}>
                         <h1>MovieDB</h1>
                     </Col>
-                    <Col lg={1}>
-                        <Link to="/">Home</Link>
+                    <Col lg={1} className="my-auto">
+                        <Link to="/" className={"header-link mx-auto"}>Home</Link>
                     </Col>
-                    <Col lg={2}>
-                        <Link to="/addmovie">Add Movie</Link>
+                    <Col lg={2} className="my-auto">
+                        <Link to="/addmovie" className="header-link mx-auto">Add Movie</Link>
                     </Col>
-                    <Col lg={1}>
-                        <button onClick={this.onUserStateChange}>{this.props.username ? 'Log Out' : 'Log In'}</button>
+                    <Col lg={2} className="my-auto">
+                        <button className="p-1 m-1" onClick={this.onUserStateChange}>{this.props.username ? 'Log Out' : 'Log In'}</button>
                     </Col>
                 </Row>
             </Container>
