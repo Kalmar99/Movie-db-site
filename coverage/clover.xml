@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1587747003736" clover="3.2.0">
-  <project timestamp="1587747003736" name="All files">
-    <metrics statements="271" coveredstatements="162" conditionals="80" coveredconditionals="46" methods="67" coveredmethods="33" elements="418" coveredelements="241" complexity="0" loc="271" ncloc="271" packages="3" files="12" classes="12"/>
+<coverage generated="1587753179889" clover="3.2.0">
+  <project timestamp="1587753179889" name="All files">
+    <metrics statements="280" coveredstatements="164" conditionals="82" coveredconditionals="46" methods="67" coveredmethods="33" elements="429" coveredelements="243" complexity="0" loc="280" ncloc="280" packages="3" files="12" classes="12"/>
     <package name="client">
       <metrics statements="11" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
       <file name="index.jsx" path="C:\Users\jkr99\WebProjects\Movie-db-site\src\client\index.jsx">
@@ -20,9 +20,9 @@
       </file>
     </package>
     <package name="client.components">
-      <metrics statements="139" coveredstatements="49" conditionals="58" coveredconditionals="29" methods="38" coveredmethods="14"/>
+      <metrics statements="146" coveredstatements="49" conditionals="60" coveredconditionals="29" methods="38" coveredmethods="14"/>
       <file name="addMovie.jsx" path="C:\Users\jkr99\WebProjects\Movie-db-site\src\client\components\addMovie.jsx">
-        <metrics statements="31" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="10" coveredmethods="0"/>
+        <metrics statements="38" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="13" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
@@ -37,23 +37,30 @@
         <line num="43" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="71" count="0" type="stmt"/>
-        <line num="73" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="76" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="116" count="0" type="stmt"/>
-        <line num="117" count="0" type="stmt"/>
-        <line num="133" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="74" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="78" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="125" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="126" count="0" type="stmt"/>
+        <line num="127" count="0" type="stmt"/>
+        <line num="128" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
         <line num="134" count="0" type="stmt"/>
-        <line num="136" count="0" type="stmt"/>
-        <line num="139" count="0" type="stmt"/>
       </file>
       <file name="header.jsx" path="C:\Users\jkr99\WebProjects\Movie-db-site\src\client\components\header.jsx">
         <metrics statements="29" coveredstatements="15" conditionals="16" coveredconditionals="7" methods="6" coveredmethods="4"/>
@@ -183,7 +190,7 @@
       </file>
     </package>
     <package name="server">
-      <metrics statements="121" coveredstatements="113" conditionals="22" coveredconditionals="17" methods="21" coveredmethods="19"/>
+      <metrics statements="123" coveredstatements="115" conditionals="22" coveredconditionals="17" methods="21" coveredmethods="19"/>
       <file name="app.js" path="C:\Users\jkr99\WebProjects\Movie-db-site\src\server\app.js">
         <metrics statements="32" coveredstatements="30" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
         <line num="1" count="5" type="stmt"/>
@@ -263,7 +270,7 @@
         <line num="98" count="5" type="stmt"/>
       </file>
       <file name="routes.js" path="C:\Users\jkr99\WebProjects\Movie-db-site\src\server\routes.js">
-        <metrics statements="45" coveredstatements="43" conditionals="10" coveredconditionals="8" methods="9" coveredmethods="9"/>
+        <metrics statements="47" coveredstatements="45" conditionals="10" coveredconditionals="8" methods="9" coveredmethods="9"/>
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
@@ -290,8 +297,8 @@
         <line num="47" count="5" type="stmt"/>
         <line num="49" count="5" type="stmt"/>
         <line num="53" count="5" type="stmt"/>
-        <line num="55" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="57" count="1" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="57" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="58" count="1" type="stmt"/>
         <line num="59" count="1" type="stmt"/>
         <line num="60" count="1" type="stmt"/>
@@ -301,14 +308,16 @@
         <line num="64" count="1" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
-        <line num="73" count="5" type="stmt"/>
-        <line num="75" count="16" type="stmt"/>
-        <line num="76" count="16" type="cond" truecount="2" falsecount="0"/>
-        <line num="77" count="2" type="stmt"/>
-        <line num="78" count="2" type="stmt"/>
-        <line num="80" count="14" type="stmt"/>
-        <line num="84" count="5" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="75" count="5" type="stmt"/>
+        <line num="77" count="16" type="stmt"/>
+        <line num="78" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="79" count="2" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="82" count="14" type="stmt"/>
+        <line num="86" count="5" type="stmt"/>
       </file>
       <file name="server.js" path="C:\Users\jkr99\WebProjects\Movie-db-site\src\server\server.js">
         <metrics statements="4" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>

@@ -103,29 +103,25 @@ class Movie extends React.Component {
                         </Container>)}
                         </Col>
                     </Row>
-                    </Container>}
+                    
                     <Row>
-                        {this.props.username && <Col>
-                        <Container>
-                            <Row>
-                                <Col><label>Title</label></Col>
+                        {this.props.username && <Col lg={8}>
+                        <Container className="review-box p3 mt-3">
+                            <Row className="mt-3 mb-2">
+                                <Col lg={4}><input className="mt-3 mb-1 p-1" type="text" placeholder="Title"></input></Col>
+                                <Col lg={2}><i className="fas fa-star star mt-2 mb-1 p-1"> </i> <input className="review-box-star-input mt-3 mb-1 p-1" type="number"></input></Col>
                             </Row>
-                            <Row>
-                                <Col><input type="text"></input></Col>
+                            <Row className="mt-1 mb-1">
+                                <Col><textarea rows='5' className="mt-1 mb-1 p-1" placeholder='Description' type="text"></textarea></Col>
                             </Row>
-                            <Row>
-                                <Col><label>Description</label></Col>
-                            </Row>
-                            <Row>
-                                <Col><Col><input type="text"></input></Col></Col>
-                            </Row>
-                            <Row>
-                                <Col><i className="fas fa-star star"> </i> <input type="number"></input></Col>
-                                <Col><button>Submit</button></Col>
+                            <Row className="mt-1 mb-3">
+                                <Col><button className="mt-1 mb-3 p-2">Submit</button></Col>
                             </Row>
                         </Container>
                         </Col>}
                     </Row>
+
+                    </Container>}
             </Container>
         )
     }

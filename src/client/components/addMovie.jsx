@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 
-
+import {Header} from './header'
 
 
 export class AddMovie extends React.Component {
@@ -84,33 +84,22 @@ export class AddMovie extends React.Component {
 
     renderIfLoggedIn = () => {
         return (
-            <Container>
+            <Container className="review-box">
                 <Row>
-                    <Col><label>Movie Title</label></Col>
+                    <Col className="mt-3 mb-2" lg={4}><input className="p-1" placeholder="Title" onChange={this.onNameChange} type="text"></input></Col>
                 </Row>
                 <Row>
-                    <Col><input onChange={this.onNameChange} type="text"></input></Col>
-                </Row>
-                <Row> 
-                    <Col><label>Thumbnail Url</label></Col>
+                    <Col className="mb-2" lg={7}><input className="p-1" placeholder="Image Url" onChange={this.onImageChange} type="text"></input></Col>
                 </Row>
                 <Row>
-                    <Col><input onChange={this.onImageChange} type="text"></input></Col>
+                    <Col className="mb-2"><textarea className="p-1" rows="4" placeholder="Description" onChange={this.onDescriptionChange}></textarea></Col>
                 </Row>
                 <Row>
-                    <Col><label>Description</label></Col>
+                    <Col lg={2}> <i className="fas fa-star star mt-2 mb-1 p-1"> </i> <input className="p-1 review-box-star-input" placeholder="Stars" onChange={this.onStarsChange} type="number"></input></Col>
+                    <Col lg={1}><input className="p-1" placeholder="year" onChange={this.onYearChange} type="number"></input></Col>
                 </Row>
                 <Row>
-                    <Col><textarea onChange={this.onDescriptionChange}></textarea></Col>
-                </Row>
-                <Row>
-                    <Col><label>Stars</label></Col>
-                    <Col><input onChange={this.onStarsChange} type="number"></input></Col>
-                    <Col><label>Year</label></Col>
-                    <Col><input onChange={this.onYearChange} type="number"></input></Col>
-                </Row>
-                <Row>
-                    <button onClick={this.createMovie}>Add Movie</button>
+                    <button className="m-3 p-2" onClick={this.createMovie}>Add Movie</button>
                 </Row>
             </Container>
         )
@@ -144,10 +133,13 @@ export class AddMovie extends React.Component {
 
         return (
             <Container>
-                <Row>
-
+                <Row className="mb-3">
+                    <Header username={this.props.username} updateLoggedInUser={this.props.updateLoggedInUser} history={this.props.history}/>
                 </Row>
                 <Row>
+                    <Col className="m-0 p-1"><h2>Add Movie</h2></Col>
+                </Row>
+                <Row className="mt-1">
                     {content}
                 </Row>
             </Container>

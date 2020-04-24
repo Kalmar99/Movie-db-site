@@ -13,3 +13,59 @@
     
 }
 
+.review-box {
+    background-color: #101014;
+    border-radius:4px;
+}
+
+.review-box input {
+    width:100%;
+    background-color: #18181E;
+    color:white !important;
+    border: none;
+    resize: none;
+}
+
+.review-box textarea {
+    width:100%;
+    background-color: #18181E;
+    color:white !important;
+    border: none;
+    resize: none;
+}
+
+
+.review-box input::placeholder {
+    color:white !important;
+}
+.review-box input::-ms-input-placeholder {
+    color:white !important;
+}
+
+.review-box input:-ms-input-placeholder {
+    color:white !important;
+}
+
+.review-box textarea::placeholder { 
+    color: white !important;
+    opacity: 1;
+}
+
+.review-box textarea:-ms-input-placeholder { 
+    color: white !important;
+}
+
+.review-box textarea::-ms-input-placeholder { 
+    color: white !important;
+}
+
+.review-box-star-input {
+    width:65% !important;
+}
+
+.review-box button {
+    background-color: #DEC79B;
+    color:black;
+    border:none;
+    font-weight: 500;
+}
