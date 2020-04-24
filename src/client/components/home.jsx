@@ -21,6 +21,10 @@ class Home extends React.Component {
         this.fetchMovies()
     }
 
+    componentWillUnmount() {
+        console.log("unmount")
+    }
+
     fetchMovies = async () => {
 
         let response;
@@ -42,14 +46,13 @@ class Home extends React.Component {
             this.setState({error: 'Cant get movies code: ' + response.status})
             return;
         }
-
     
     }
 
     render() {
 
         let display;
-
+       
         if(this.state.error !== null) {
             display = <p>{this.state.error}</p>
         } else if(this.state.movies === null || this.state.movies.length === 0) {

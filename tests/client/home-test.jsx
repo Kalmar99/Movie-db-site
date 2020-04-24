@@ -28,6 +28,7 @@ test("Test failed fetch", async () => {
     expect(html).toMatch("Cant get movies code: 500");
 });
 
+
 test('Display 1 movie using stubFetch',async () => {
   
     const title = 'Goodfellas';
@@ -47,50 +48,47 @@ test('Display 1 movie using stubFetch',async () => {
             }]
         }],
         (url) => url.endsWith('/api/movies')
-    )
+    );
 
     const driver = mount(
         <MemoryRouter initialEntries={["/home"]}>
             <Home/>
         </MemoryRouter>
-    )
+    );
 
     await flushPromises()
 
     const html = driver.html()
 
     expect(html).toMatch(title)
-})
+}); 
 
-test('Display movies using supertest',async () => {
-    
-    db.addExampleMovies()
+test("Test display movies using SuperTest", async () => {
 
-    overrideFetch(app)
+    db.addExampleMovies();
+    overrideFetch(app);
 
     const driver = mount(
         <MemoryRouter initialEntries={["/home"]}>
             <Home/>
         </MemoryRouter>
-    )
+    );
 
     const predicate = () => {
+      
         driver.update();
-        console.log(driver.html())
-        const movieSearch = driver.find('.allMovies')
-        console.log(movieSearch.length)
-        const movieIsDisplayed = (movieSearch.length >= 1)
+        const movieSearch = driver.find('.allMovies');
+        const movieIsDisplayed =  (movieSearch.length >= 1);
         return movieIsDisplayed;
+    };
+
+    const displayedMovie = await asyncCheckCondition(predicate, 3000, 200);
+    expect(displayedMovie).toBe(true);
+
+    const movies = db.getAllMovies();
+    const html = driver.html();
+
+    for(let i=0; i<movies.length; i++){
+        expect(html).toMatch(movies[i].name);
     }
-
-    const displayedMovie = asyncCheckCondition(predicate,7000,700);
-    expect(displayedMovie).toBe(true)
-
-    const movies = db.getAllMovies()
-    const html = driver.html()
-
-    for(let i = 0; i < movies.length; i++) {
-        expect(html).toMatch(movies[i].image)
-    }
-
-})
+});
