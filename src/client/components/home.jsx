@@ -19,28 +19,53 @@ class Home extends React.Component {
 
     componentDidMount() {
         this.fetchMovies()
-        console.log(this.props)
     }
 
     fetchMovies = async () => {
+
+        let response;
+        let payload;
+
         try {
-            
-            const response = await fetch("/api/movies")
-            const payload = await response.json()
-
-            if(response.status !== 200) {
-                this.setState({error: 'Cant get movies code: ' + response.status})
-                return;
-            }
-            
-            this.setState({error: null, movies: payload})
-
+             response = await fetch("/api/movies")
+             payload = await response.json()
         } catch(err) {
             this.setState({error: 'cant connect to server'})
         }
+
+        if(response.status === 200) {
+            this.setState({
+                error: null,
+                movies: payload
+            })
+        } else {
+            this.setState({error: 'Cant get movies code: ' + response.status})
+            return;
+        }
+
+    
     }
 
     render() {
+
+        let display;
+
+        if(this.state.error !== null) {
+            display = <p>{this.state.error}</p>
+        } else if(this.state.movies === null || this.state.movies.length === 0) {
+            display = <p>There is no movies in database</p>
+        } else {
+            display = 
+            <Row className="justify-content-center allMovies">
+                <Row lg={12} className="">
+                    {this.state.movies && this.state.movies.map((movie) => 
+                    <Col className="m-2 mb-3 movie" lg={2} key={movie.name}>
+                        <Link to={"/movie?n=" + movie.name}><img src={movie.image}></img></Link>
+                    </Col>
+                    )}
+                </Row>
+            </Row>
+        }
 
         return (
             <Container>
@@ -54,14 +79,9 @@ class Home extends React.Component {
                         </Row>
                     </Container>
                 </Row>
-                <Row className="justify-content-center">
-                    <p>{this.state.error && this.state.error}</p>
-                    {this.state.movies && this.state.movies.map((movie) => 
-                    <Col className="m-2 mb-3" lg={2} key={movie.name}>
-                        <Link to={"/movie?n=" + movie.name}><img src={movie.image}></img></Link>
-                    </Col>
-                    )}
-                </Row>
+               
+                {display}
+                
             </Container>
         )
     }
