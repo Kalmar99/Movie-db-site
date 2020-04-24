@@ -54,27 +54,30 @@ export class AddMovie extends React.Component {
         }
 
         let response;
-
+        console.log(movie)
         try {
             response = await fetch('/api/movies',{
                 method: 'POST',
-                headers: [
-                    {'Content-Type': 'appliction/json'}
-                ],
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify(movie)
-            })
+            });
         } catch(error) {
             this.setState({error})
         }
 
         if(response.status === 401) {
             this.setState({error: 'you need to be logged in to do that!'})
+            return;
         }
         if(response.status === 500) {
             this.setState({error:'500 Internal Server Error'})
+            return;
         }
         if(response.status === 201) {
-            this.props.history.push('/movie/?n=' + movie.name)
+            this.props.history.push('/movie?n=' + movie.name)
+            return;
         }
 
     }
@@ -130,7 +133,10 @@ export class AddMovie extends React.Component {
         
         let content;
 
-        if(!this.props.username) {
+        if(this.state.error !== null) {
+            console.log(this.state.error)
+            content = <p>{this.state.error.toString()}</p>
+        } else if(!this.props.username) {
             content = this.renderIfLoggedOut()
         } else {
             content = this.renderIfLoggedIn()
@@ -138,6 +144,9 @@ export class AddMovie extends React.Component {
 
         return (
             <Container>
+                <Row>
+
+                </Row>
                 <Row>
                     {content}
                 </Row>

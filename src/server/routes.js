@@ -52,15 +52,17 @@ router.get('/api/movies',(req,res) => {
 
 router.post('/api/movies',(req,res) => {
 
-    if(req.user) {
+    console.log('user')
 
+    if(req.user) {
+        console.log(req.body)
         const name = req.body.name
         const image = req.body.image
         const stars = req.body.stars
         const description = req.body.description
         const year = req.body.year
         db.createMovie(name,stars,year,description,image,null)
-        res.header('location','/api/movies/' + name)
+        console.log('movie created: ' + name + ' ' + year)
         res.status(201)
         res.send()
         return;
