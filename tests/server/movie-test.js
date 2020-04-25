@@ -37,7 +37,7 @@ test("Get Movie by name",async () => {
 test('Create movie',async () => {
 
     const username = 'user_admin'
-    const numberOfMovies = await (await request(app).get('/api/movies')).body.length;
+    const numberOfMovies = (await request(app).get('/api/movies')).body.length;
 
     let response = await request(app)
         .post('/api/signup')
@@ -138,4 +138,44 @@ test('Test Update movie',async () => {
 
 
 })
-        
+
+
+test('Delete Movie',async () => {
+
+    const username = 'delete_user'
+    const password = 'delete_user'
+
+    let response = await signup(app,username,password)
+    expect(response.statusCode).toBe(201)
+
+    const agent = request.agent(app)
+
+    response = await login(agent,username,password)
+
+    expect(response.statusCode).toBe(204)
+
+    const movieName = 'TestMovie'
+
+    response = await createMovie(agent,{
+        name: movieName,
+        stars: 7,
+        year: 1990,
+        description: 'this is a test movie',
+        image: 'url',
+        review: null
+    })
+
+    expect(response.statusCode).toBe(201)
+
+    //Delete movie
+    response = await agent
+        .delete('/api/movies/' + movieName)
+    
+    expect(response.statusCode).toBe(204)
+
+    response = await agent
+        .get('/api/movies/' + movieName)
+    
+    expect(response.statusCode).toBe(404)
+
+})

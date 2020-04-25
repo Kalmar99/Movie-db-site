@@ -31,18 +31,22 @@ export class Header extends React.Component {
         payload = await response.json()
     } catch(error) {
         this.setState({error})
+        return;
     }
 
     if(response.status === 404) {
         this.props.updateLoggedInUser(false)
+        return;
     }
 
     if(response.status === 401) {
         this.props.updateLoggedInUser(false)
+        return;
     }
 
     if(response.status === 200) {
         this.props.updateLoggedInUser(payload.username)
+        return;
     }
 
    }

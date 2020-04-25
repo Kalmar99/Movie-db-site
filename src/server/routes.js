@@ -52,8 +52,6 @@ router.get('/api/movies',(req,res) => {
 
 router.post('/api/movies',(req,res) => {
 
-    console.log('user')
-
     if(req.user) {
         const name = req.body.name
         const image = req.body.image
@@ -61,7 +59,7 @@ router.post('/api/movies',(req,res) => {
         const description = req.body.description
         const year = req.body.year
         db.createMovie(name,stars,year,description,image,null)
-        console.log('movie created: ' + name + ' ' + year)
+
         res.status(201)
         res.send()
         return;
@@ -95,6 +93,29 @@ router.put('/api/movies/:name',(req,res) => {
     }
     res.status.send(401).send()
     
+})
+
+router.delete('/api/movies/:name',(req,res) => {
+    
+    const name = req.params['name']
+
+    if(name) {
+        if(req.user) {
+            
+            if(db.deleteMovie(name)) {
+                res.status(204).send()
+                return;
+            }
+            res.status(404).send()
+            return;
+        }
+        res.status(401).send()
+        return;
+    }
+    res.status(400).send()
+    return;
+    
+
 })
 
 router.get('/api/movies/:name',(req,res) => {

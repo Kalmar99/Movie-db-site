@@ -6,10 +6,9 @@ const {AddMovie} = require('../../src/client/components/addMovie')
  
 
 const {stubFetch, flushPromises, overrideFetch, asyncCheckCondition} = require('../mytest-utils');
-const app = require('../../src/server/app')
-const db = require('../../src/server/db')
 
-test('Test unautorized acess', () => {
+
+test('Test unautorized acess', async () => {
 
   
     const driver = mount(
@@ -20,6 +19,8 @@ test('Test unautorized acess', () => {
         </MemoryRouter>
         );
     
+    await flushPromises()
+
     const html = driver.html();
 
     
@@ -38,7 +39,6 @@ test('Test authorized access', () => {
         );
     
         const html = driver.html()
-
 
         expect(html).toMatch('<div class="review-box container">')
 

@@ -25,6 +25,45 @@ class Movie extends React.Component {
         this.fetchMovie(id);
     }
 
+    deleteMovie = async () => {
+
+        let response;
+
+        try {
+            response = await fetch('/api/movies/' + this.state.movie.name,{
+                method: 'DELETE'
+            })
+
+        } catch(error) {
+            this.setState({error: 'Unable to connect to server'})
+            return;
+        }
+
+        if(response.status == 401) {
+            this.setState({error: '401 Unautorized'})
+            return;
+        }
+
+        if(response.status == 404) {
+            this.setState({error: '404 Cant find the movie you tried to delete'})
+            return;
+        }
+
+        if(response.status == 400) {
+            this.setState({error: 'Bad request'})
+            return;
+        }
+
+        if(response.status !== 204) {
+            this.setState({error: 'Something went worng: ' + response.status})
+            return;
+        }
+
+        this.props.history.push('/')
+        return;
+
+    }
+
     fetchMovie = async (id) => {
 
         let response;
@@ -83,7 +122,8 @@ class Movie extends React.Component {
                                 <Col><p>{this.state.movie.description}</p></Col>
                             </Row>
                             {this.props.username && <Row>
-                                <Link to={'/editmovie?n=' + this.state.movie.name}><button>Edit</button></Link>
+                                <Col lg={2}><Link to={'/editmovie?n=' + this.state.movie.name}><button>Edit</button></Link></Col>
+                                <Col lg={2}><button onClick={this.deleteMovie}>Delete</button></Col>
                             </Row>}
                         </Container>
                     </Col>

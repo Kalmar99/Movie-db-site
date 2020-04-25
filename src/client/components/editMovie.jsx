@@ -143,7 +143,6 @@ export class EditMovie extends React.Component {
         let content;
 
         if(this.state.error !== null) {
-            console.log(this.state.error)
             content = <p>{this.state.error.toString()}</p>
         } else if(!this.props.username) {
             content = this.renderIfLoggedOut()
