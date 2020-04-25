@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 
 import {Header} from './header'
-
+import {MovieForm} from './movieForm'
 
 export class AddMovie extends React.Component {
     
@@ -13,48 +13,23 @@ export class AddMovie extends React.Component {
         super(props)
 
         this.state = {
-            name: null,
-            year: null,
-            stars: null,
-            description: null,
-            image: null,
             error: null
         }
 
     }
 
-    onNameChange = (event) => {
-        this.setState({name: event.target.value})
-    }
-
-    onYearChange = (event) => {
-        this.setState({year: event.target.value})
-    }
-
-    onStarsChange = (event) => {
-        this.setState({stars: event.target.value})
-    }
-
-    onDescriptionChange = (event) => {
-        this.setState({description: event.target.value})
-    }
-
-    onImageChange = (event) => {
-        this.setState({image: event.target.value})
-    }
-
-    createMovie = async () => {
+    createMovie = async (state) => {
 
         const movie = {
-            name: this.state.name,
-            year: this.state.year,
-            stars: this.state.stars,
-            description: this.state.description,
-            image: this.state.image
+            name: state.name,
+            year: state.year,
+            stars: state.stars,
+            description: state.description,
+            image: state.image
         }
 
         let response;
-        console.log(movie)
+        
         try {
             response = await fetch('/api/movies',{
                 method: 'POST',
@@ -84,24 +59,12 @@ export class AddMovie extends React.Component {
 
     renderIfLoggedIn = () => {
         return (
-            <Container className="review-box">
-                <Row>
-                    <Col className="mt-3 mb-2" lg={4}><input className="p-1" placeholder="Title" onChange={this.onNameChange} type="text"></input></Col>
-                </Row>
-                <Row>
-                    <Col className="mb-2" lg={7}><input className="p-1" placeholder="Image Url" onChange={this.onImageChange} type="text"></input></Col>
-                </Row>
-                <Row>
-                    <Col className="mb-2"><textarea className="p-1" rows="4" placeholder="Description" onChange={this.onDescriptionChange}></textarea></Col>
-                </Row>
-                <Row>
-                    <Col lg={2}> <i className="fas fa-star star mt-2 mb-1 p-1"> </i> <input className="p-1 review-box-star-input" placeholder="Stars" onChange={this.onStarsChange} type="number"></input></Col>
-                    <Col lg={1}><input className="p-1" placeholder="year" onChange={this.onYearChange} type="number"></input></Col>
-                </Row>
-                <Row>
-                    <button className="m-3 p-2" onClick={this.createMovie}>Add Movie</button>
-                </Row>
-            </Container>
+            <MovieForm 
+                name={null}
+                action={this.createMovie}
+                username={this.props.username}
+                title={'Add Movie'}
+            />
         )
     }
 
