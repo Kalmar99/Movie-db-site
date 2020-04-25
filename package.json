@@ -71,6 +71,6 @@
         "test": "jest --coverage",
         "watch:client": "webpack --watch --mode development",
         "watch:server": "nodemon src/server/server.js --watch src/server --watch public/bundle.js",
-        "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
+        "coveralls": "jest --coverage && cat coverage/lcov.info | coveralls"
     }
 }
