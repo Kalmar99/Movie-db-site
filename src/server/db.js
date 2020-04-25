@@ -65,6 +65,10 @@ function getMovie(name) {
         return movies.get(name)
     }
 }
+ 
+function deleteMovie(name) {
+    return movies.delete(name)
+}
 
 function getAllMovies() {
     return Array.from(movies.values())
@@ -95,4 +99,4 @@ function addExampleMovies() {
 
 createUser("kalmar","123");
 addExampleMovies();
-module.exports = {createUser,getUser,verifyUser,getMovie,getAllMovies,createMovie,addExampleMovies}
+module.exports = {createUser,getUser,verifyUser,getMovie,getAllMovies,createMovie,addExampleMovies,deleteMovie}

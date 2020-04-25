@@ -55,7 +55,6 @@ router.post('/api/movies',(req,res) => {
     console.log('user')
 
     if(req.user) {
-        console.log(req.body)
         const name = req.body.name
         const image = req.body.image
         const stars = req.body.stars
@@ -70,6 +69,32 @@ router.post('/api/movies',(req,res) => {
 
     res.status(401).send()
 
+})
+
+router.put('/api/movies/:name',(req,res) => {
+
+    const oldName = req.params['name'];
+
+    if(req.user) {
+        
+        const name = req.body.name
+        const image = req.body.image
+        const stars = req.body.stars
+        const description = req.body.description
+        const year = req.body.year
+        const reviews = req.body.reviews
+
+        if(db.deleteMovie(oldName)){
+            db.createMovie(name,stars,year,description,image,reviews)
+            res.status(204).send()
+            return;
+        } else {
+            res.status(404).send()
+            return;
+        }
+    }
+    res.status.send(401).send()
+    
 })
 
 router.get('/api/movies/:name',(req,res) => {

@@ -8,6 +8,7 @@ import SignUp from './components/signup'
 import NotFound from './components/notfound'
 import {Movie} from './components/movie'
 import {AddMovie} from './components/addMovie'
+import {EditMovie} from './components/editMovie'
 
 
 export class App extends React.Component {
@@ -42,6 +43,10 @@ export class App extends React.Component {
                                                       updateLoggedInUser={this.updateLoggedInUser}/>}/>
                         <Route exact path="/addmovie"
                                render={props => <AddMovie {...props}
+                                                      username={this.state.username}
+                                                      updateLoggedInUser={this.updateLoggedInUser}/>}/>
+                        <Route exact path="/editmovie"
+                               render={props => <EditMovie {...props}
                                                       username={this.state.username}
                                                       updateLoggedInUser={this.updateLoggedInUser}/>}/>
 

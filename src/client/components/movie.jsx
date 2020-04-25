@@ -3,6 +3,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import {Link} from 'react-router-dom'
 
 import {Header} from './header'
 
@@ -81,6 +82,9 @@ class Movie extends React.Component {
                             <Row>
                                 <Col><p>{this.state.movie.description}</p></Col>
                             </Row>
+                            {this.props.username && <Row>
+                                <Link to={'/editmovie?n=' + this.state.movie.name}><button>Edit</button></Link>
+                            </Row>}
                         </Container>
                     </Col>
                     </Row>
