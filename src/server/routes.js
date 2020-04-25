@@ -69,6 +69,29 @@ router.post('/api/movies',(req,res) => {
 
 })
 
+router.post('/api/movies/reviews/:name',(req,res) => {
+    
+    const name = req.params['name'];
+
+    if(req.user) {
+        console.log('auth')
+        const movie = db.getMovie(name)
+        if(movie) {
+            console.log('runs')
+            movie.review.push({title: req.body.title, stars: req.body.stars, description: req.body.description})
+            db.deleteMovie(name)
+            db.createMovie(movie.name,movie.stars,movie.year,movie.description,movie.image,movie.review)
+            res.status(204).send()
+            return;
+        } 
+        res.status(404).send()
+        return;
+        
+    }
+    res.status(401).send()
+    return;
+})
+
 router.put('/api/movies/:name',(req,res) => {
 
     const oldName = req.params['name'];
