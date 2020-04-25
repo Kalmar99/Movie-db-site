@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "cors": "^2.8.4",
+        "coveralls": "^3.1.0",
         "express": "4.17.1",
         "express-session": "1.17.0",
         "passport": "^0.4.0",
@@ -40,12 +41,12 @@
         "babel-jest": "24.9.0",
         "babel-loader": "8.0.6",
         "concurrently": "5.0.0",
-        "enzyme": "3.10.0", 
-        "enzyme-adapter-react-16": "1.15.1", 
+        "enzyme": "3.10.0",
+        "enzyme-adapter-react-16": "1.15.1",
         "jest": "24.9.0",
-        "jsdom": "15.2.1", 
+        "jsdom": "15.2.1",
         "nodemon": "2.0.1",
-        "react-addons-test-utils": "^15.6.2", 
+        "react-addons-test-utils": "^15.6.2",
         "supertest": "4.0.2",
         "webpack": "4.41.2",
         "webpack-cli": "3.3.10"
@@ -59,7 +60,7 @@
         ],
         "setupFilesAfterEnv": [
             "<rootDir>/tests/jest-setup.js"
-        ], 
+        ],
         "testEnvironment": "node",
         "testRegex": "tests/.*-test\\.(js|jsx)$"
     },
@@ -69,6 +70,7 @@
         "start": "node src/server/server.js",
         "test": "jest --coverage",
         "watch:client": "webpack --watch --mode development",
-        "watch:server": "nodemon src/server/server.js --watch src/server --watch public/bundle.js"
+        "watch:server": "nodemon src/server/server.js --watch src/server --watch public/bundle.js",
+        "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
     }
 }
