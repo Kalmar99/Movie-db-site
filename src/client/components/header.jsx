@@ -99,7 +99,7 @@ export class Header extends React.Component {
                         <Link to="/addmovie" className="header-link mx-auto">Add Movie</Link>
                     </Col>
                     <Col lg={2} className="my-auto">
-                        <button className="p-1 m-1" onClick={this.onUserStateChange}>{this.props.username ? 'Log Out' : 'Log In'}</button>
+                        <button className={"p-1 m-1 log-btn"} onClick={this.onUserStateChange}>{this.props.username ? 'Log Out' : 'Log In'}</button>
                     </Col>
                 </Row>
             </Container>

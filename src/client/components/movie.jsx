@@ -122,8 +122,8 @@ class Movie extends React.Component {
                                 <Col><p>{this.state.movie.description}</p></Col>
                             </Row>
                             {this.props.username && <Row>
-                                <Col lg={2}><Link to={'/editmovie?n=' + this.state.movie.name}><button>Edit</button></Link></Col>
-                                <Col lg={2}><button onClick={this.deleteMovie}>Delete</button></Col>
+                                <Col lg={2}><Link to={'/editmovie?n=' + this.state.movie.name}><button className="editBtn p-1">Edit</button></Link></Col>
+                                <Col lg={2}><button className="deleteBtn p-1" onClick={this.deleteMovie}>Delete</button></Col>
                             </Row>}
                         </Container>
                     </Col>

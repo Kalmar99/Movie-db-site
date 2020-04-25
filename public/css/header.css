@@ -2,3 +2,11 @@
     text-decoration: none !important;
     color:#DEC79B !important;
 }
+
+
+.log-btn {
+    background-color:#DEC79B;
+    border:none;
+    width:70%;
+}
+

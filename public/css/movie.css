@@ -69,3 +69,17 @@
     border:none;
     font-weight: 500;
 }
+
+.editBtn {
+
+    background-color: #3DA535;
+    width:100%;
+    border:none;
+
+}
+
+.deleteBtn {
+    background-color: #D13131;
+    width:100%;
+    border:none;
+}
