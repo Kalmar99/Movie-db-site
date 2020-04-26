@@ -179,3 +179,53 @@ test('Delete Movie',async () => {
     expect(response.statusCode).toBe(404)
 
 })
+
+test('Test write review',async () => {
+
+    const username = 'review_user'
+    const password = 'review_user'
+
+    let response = await signup(app,username,password)
+
+    expect(response.statusCode).toBe(201)
+
+    const agent = request.agent(app)
+
+    response = await login(agent,username,password)
+
+    expect(response.statusCode).toBe(204)
+
+    const movieName = 'TestMovie2'
+
+    response = await createMovie(agent,{
+        name: movieName,
+        stars: 7,
+        year: 1990,
+        description: 'this is a test movie',
+        image: 'url',
+        review: null
+    })
+
+    expect(response.statusCode).toBe(201)
+    
+    const movie = await agent.get('/api/movies/' + movieName)
+    const numberOfReviews = movie.body.review.length
+
+    const review = {
+        title: 'Great Movie',
+        description: 'Great',
+        stars: 8
+    }
+
+    response = await agent
+        .post('/api/movies/reviews/' + movieName)
+        .send(review)
+        .set('Content-Type','application/json')
+
+    expect(response.statusCode).toBe(204)
+
+    const movieAfterReview = await agent.get('/api/movies/' + movieName)
+    expect(movieAfterReview.body.review.length).toBe(numberOfReviews+1)
+
+    
+})
